@@ -38,9 +38,7 @@ const LandingLayout = (props) => {
 				}
 			</Head>
 			<Header />
-			<div style={{padding: "2rem"}}>
-				{children}
-			</div>
+			{children}
 			<Footer />
 		</Fragment>
 	)
