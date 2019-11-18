@@ -64,12 +64,29 @@ const AboutUsPage = () => {
 						</Statement>
 					</Grid>
 				</Grid>
+				<hr style={{margin: "2rem 0"}}/>
 				<Grid container spacing={3}>
 					<Grid item xl={6} md={6} xs={12}>
+						<iframe 
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.271191419461!2d106.715350315147!3d-6.094125995587132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a03295f5c3425%3A0xdcf82654a2825df3!2sPT%20Mitra%20Jaya%20Anugerah!5e0!3m2!1sen!2sid!4v1574082630510!5m2!1sen!2sid"
+							frameBorder="0" 
+							style={{
+								width: "100%",
+								height: "35rem",
+								border: 0
+							}}
+						/>
+					</Grid>
+					<Grid 
+						item xl={6} md={6} xs={12} 
+						style={{
+							display: "flex",
+							flexDirection: "column", 
+							justifyContent: "center"
+						}}
+					>
 						<h2>Alamat</h2>
 						<p>{address}</p>
-					</Grid>
-					<Grid item xl={6} md={6} xs={12}>
 						<h2>Kontak</h2>
 						<ul 
 							style={{
@@ -82,6 +99,11 @@ const AboutUsPage = () => {
 								return <li key={name + index}>{name}: {value}</li>
 							})}
 						</ul>
+						<h2>Jam Kerja</h2>
+						<p>
+							Senin - Jumat, 8:00 - 17:00<br />
+							Sabtu, 8:00 - 12:00
+						</p>
 					</Grid>
 				</Grid>
 			</SimpleSection>
