@@ -1,4 +1,5 @@
 import Document, {Html, Head, Main, NextScript} from "next/document"
+import {fontFamily} from "../vars/styles"
 
 class MyDocument extends Document {
 	static async getInitialProps(ctx) {
@@ -20,7 +21,7 @@ class MyDocument extends Document {
 				</Head>
 				<body 
 					style={{
-						fontFamily: "'Open Sans', Arial, sans-serif",
+						fontFamily: fontFamily,
 						margin: 0
 					}}
 				>

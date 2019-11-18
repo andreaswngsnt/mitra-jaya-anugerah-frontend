@@ -1,158 +1,35 @@
 import {Fragment} from "react"
 import Link from "next/link"
 
-import {Grid, Hidden, Paper} from "@material-ui/core"
+import {Grid, Paper} from "@material-ui/core"
 
 import LandingLayout from "../components/Layout/LandingLayout"
+import BackgroundSection from "../components/Section/BackgroundSection"
+import CardSection from "../components/Section/CardSection"
+
+import HeroHeading from "../components/Text/HeroHeading"
+import HighlightedSectionHeading from "../components/Text/HighlightedSectionHeading"
 import DefaultButton from "../components/Button/DefaultButton"
 
-const HeroHeading = (props) => {
-	const {children} = props
-
-	const styles = {
-		text: {
-			position: "relative",
-			left: "0.25em",
-			fontWeight: 400,
-			color: "#FFFFFF"
-		},
-		highlight: {
-			display: "inline",
-			backgroundColor: "#FFC000",
-			boxShadow: "0.25em 0 0 #FFC000, -0.25em 0 0 #FFC000",
-			opacity: 0.95
-		}
-	}
-
-	return (
-		<Fragment>
-			<Hidden smDown>
-				<h1 style={{...styles.text, fontSize: "48px"}}>
-					<span style={styles.highlight}>
-						{children}
-					</span>
-				</h1>
-			</Hidden>
-			<Hidden mdUp>
-				<h1 style={styles.text}>
-					<span style={styles.highlight}>
-						{children}
-					</span>
-				</h1>
-			</Hidden>
-		</Fragment>
-	)
-}
-
-const SectionHeading = (props) => {
-	const {children} = props
-
-	const styles = {
-		text: {
-			position: "relative",
-			left: "0.25em",
-			color: "#FFFFFF"
-		},
-		highlight: {
-			display: "inline",
-			backgroundColor: "#FFC000",
-			boxShadow: "0.25em 0 0 #FFC000, -0.25em 0 0 #FFC000",
-			opacity: 0.95
-		}
-	}
-
-	return (
-		<h2 style={styles.text}>
-			<span style={styles.highlight}>
-				{children}
-			</span>
-		</h2>
-	)
-}
-
-const CardSection = (props) => {
-	const {children} = props
-
-	return (
-		<Grid container justify="center">
-			<Grid item xl={8} md={9} xs={12} style={{padding: "1rem"}}>
-				<Paper 
-					elevation={5} 
-					square 
-					style={{
-						position: "relative", 
-						top: "-5rem", 
-						borderTop: "0.25rem solid",
-						borderColor: "#FFC000"
-					}}
-				>
-					<Hidden smDown>
-						<div style={{padding: "2.5rem 5rem"}}>
-							{children}
-						</div>
-					</Hidden>
-					<Hidden mdUp>
-						<div style={{padding: "1rem"}}>
-							{children}
-						</div>
-					</Hidden>
-				</Paper>
-			</Grid>
-		</Grid>
-	)
-}
-
-const BackgroundSection = (props) => {
-	const {backgroundImagePath, children} = props
-
-	return (
-		<Grid 
-			container
-			justify="center"
-			style={{
-				backgroundImage: `url(${backgroundImagePath})`,
-				backgroundPosition: "center bottom",
-				backgroundRepeat: "no-repeat",
-				backgroundSize: "cover"
-			}}
-		>
-			<Grid item xl={8} md={9} xs={12}>
-				<Hidden smDown>
-					<div style={{padding: "2.5rem 5rem"}}>
-						{children}
-					</div>
-				</Hidden>
-				<Hidden mdUp>
-					<div style={{padding: "1rem"}}>
-						{children}
-					</div>
-				</Hidden>
-			</Grid>
-		</Grid>
-	)
-}
+import {colors} from "../vars/styles"
 
 const ProductPreview = (props) => {
 	const {name, imagePath} = props
 
 	return (
 		<Fragment>
-			<h3>
+			<h4>
 				{name}
-			</h3>
-			{typeof imagePath === "string" 
-				? (
-				<img 
-					src={imagePath}
-					alt={name}
-					style={{
-						width: "100%",
-						height: "10rem",
-						objectFit: "cover"
-					}} 
-				/>
-				) : null
-			}
+			</h4>
+			<img 
+				src={typeof imagePath === "string" ? imagePath : "/logo.png"}
+				alt={name}
+				style={{
+					width: "100%",
+					height: "10rem",
+					objectFit: "cover"
+				}} 
+			/>
 		</Fragment>
 	)
 }
@@ -166,33 +43,29 @@ const ProjectPreview = (props) => {
 			square
 			style={{
 				borderTop: "0.25rem solid",
-				borderColor: "#FFC000"
+				borderColor: colors.yellow
 			}}
 		>
+			<img 
+				src={typeof imagePath === "string" ? imagePath : "/logo.png"}
+				alt={name}
+				style={{
+					width: "100%",
+					height: "15rem",
+					objectFit: "cover"
+				}} 
+			/>
 			<div style={{padding: "1rem"}}>
 				<h3>
 					{name}
 				</h3>
-				{typeof imagePath === "string" 
-					? (
-					<img 
-						src={imagePath}
-						alt={name}
-						style={{
-							width: "100%",
-							height: "10rem",
-							objectFit: "cover"
-						}} 
-					/>
-					) : null
-				}
 			</div>
 		</Paper>
 	)
 }
 
 const HomePage = () => {
-	const heroImagePath = '/images/background/construction_3.jpg'
+	const heroImagePath = '/images/backgrounds/construction_3.jpg'
 	const products = [
 		{name: "Plywood", imagePath: "/images/products/plywood.jpg"},
 		{name: "Fancy Plywood", imagePath: "/images/products/fancy_plywood.jpg"},
@@ -201,16 +74,19 @@ const HomePage = () => {
 		{name: "Seng Gelombang", imagePath: "/images/products/corrugated_zinc_sheet.jpg"},
 		{name: "Paku", imagePath: "/images/products/nails.jpg"}
 	]
-	const projectImagePath = '/images/background/construction_2.jpg'
+	const projectImagePath = '/images/backgrounds/construction_2.jpg'
 	const projects = [
-		{name: "BEC Extension"},
-		{name: "West Gallery"},
-		{name: "South Quarter"}
+		{name: "Rumah Sakit Harapan Kita", imagePath: "/images/projects/rs_harapan_kita.jpg"},
+		{name: "Ciputra International", imagePath: "/images/projects/ciputra_international.jpg"},
+		{name: "Marigold BSD", imagePath: "/images/projects/marigold_bsd.jpg"}
 	]
 
 	return (
 		<LandingLayout
-			pageTitle='Beranda'
+			pageTitle="Beranda"
+			pageDescription="Kami Menyediakan Bahan-Bahan Bangunan untuk Keperluan Konstruksi Anda."
+			pageKeywords="plywood, jakarta, bahan bangunan, konstruksi, supplier"
+			pageImageURL={heroImagePath}
 		>
 			<div 
 				style={{
@@ -228,10 +104,10 @@ const HomePage = () => {
 						<HeroHeading>
 							Kami Menyediakan Bahan-Bahan Bangunan untuk Keperluan Konstruksi Anda.
 						</HeroHeading>
-						<Link href="/produk-kami">
+						<Link href="/produk-layanan">
 							<a style={{textDecoration: "none"}}>
 								<DefaultButton>
-									Lihat Produk
+									Baca Lebih
 								</DefaultButton>
 							</a>
 						</Link>
@@ -239,35 +115,41 @@ const HomePage = () => {
 				</Grid>
 			</div>
 			<CardSection>
-				<h2>Produk Kami</h2>
-				<p>
-					Kami menyediakan bahan-bahan bangunan yang diperlukan kontraktor bangunan dan interior.
-				</p>
-				<Grid container spacing={5} style={{marginBottom: "1rem"}}>
-					{products.map((productEntry, index) => {
-						const {name, imagePath} = productEntry
+				<div style={{marginBottom: "2rem"}}>
+					<h2>Produk & Layanan Kami</h2>
+					<p style={{lineHeight: "1.75em"}}>
+						Kami menyediakan bahan-bahan bangunan yang diperlukan kontraktor bangunan dan interior.
+						Apabila proyek anda terletak di daerah Jabodetabek dengan order yang cukup, kami dapat mengirim pesanan anda dengan gratis.
+					</p>
+				</div>
+				<div style={{marginBottom: "2rem"}}>
+					<h3 style={{marginBottom: 0}}>Produk</h3>
+					<Grid container spacing={3} style={{marginBottom: "1rem"}}>
+						{products.map((productEntry, index) => {
+							const {name, imagePath} = productEntry
 
-						return (
-							<Grid item xl={4} md={6} xs={12} key={name + index}>
-								<ProductPreview 
-									name={name}
-									imagePath={imagePath} 
-								/>
-							</Grid>
-						)
-					})}
-				</Grid>
-				<Link href="/produk-kami">
+							return (
+								<Grid item xl={4} md={6} xs={12} key={name + index}>
+									<ProductPreview 
+										name={name}
+										imagePath={imagePath} 
+									/>
+								</Grid>
+							)
+						})}
+					</Grid>
+				</div>
+				<Link href="/produk-layanan">
 					<a style={{textDecoration: "none"}}>
 						<DefaultButton>
-							Lihat Semua
+							Baca Lebih
 						</DefaultButton>
 					</a>
 				</Link>
 			</CardSection>
 			<BackgroundSection backgroundImagePath={projectImagePath}>
-				<SectionHeading>Proyek Kami</SectionHeading>
-				<Grid container spacing={5} style={{marginBottom: "1rem"}}>
+				<HighlightedSectionHeading>Proyek Kami</HighlightedSectionHeading>
+				<Grid container spacing={3} style={{marginBottom: "1rem"}}>
 					{projects.map((projectEntry, index) => {
 						const {name, imagePath} = projectEntry
 

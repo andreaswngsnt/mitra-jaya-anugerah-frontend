@@ -1,17 +1,20 @@
 import Link from "next/link"
 import {Grid, Paper} from "@material-ui/core"
 
+import {address, contact} from "../../vars/information"
+import {colors} from "../../vars/styles"
+
 const styles = {
 	header: {
-		color: "#FFFFFF"
+		color: colors.white
 	},
 	paragraph: {
-		color: "#999999"
+		color: colors.grey
 	},
 	linkList: {
 		listStyleType: "none",
   		padding: 0,
-		color: "#999999"
+		color: colors.grey
 	},
 	link: {
 		textDecoration: "none",
@@ -21,7 +24,7 @@ const styles = {
 
 const Footer = () => {
 	return (
-		<Paper elevation={6} square style={{backgroundColor: "#011627"}}>
+		<Paper elevation={6} square style={{backgroundColor: colors.blue}}>
 			<Grid container justify="center">
 				<Grid item xl={8} md={9} xs={12}>
 					<footer style={{padding: "2rem"}}>
@@ -37,7 +40,7 @@ const Footer = () => {
 								<h4 style={styles.header}>Tautan Berguna</h4>
 								<ul style={styles.linkList}>
 									<li>
-										<Link href='/produk-kami'><a style={styles.link}>Produk Kami</a></Link>
+										<Link href='/produk-layanan'><a style={styles.link}>Produk & Layanan</a></Link>
 									</li>
 									<li>
 										<Link href='/tentang-kami'><a style={styles.link}>Tentang Kami</a></Link>
@@ -47,15 +50,16 @@ const Footer = () => {
 							<Grid item xl={3} md={3} xs={12}>
 								<h4 style={styles.header}>Lokasi</h4>
 								<p style={styles.paragraph}>
-									Jl. Raya Dadap Pergudangan Kamal Business Center Blok C No. 1, RT.7/RW.1, 
-									Kamal Muara, Kec. Penjaringan, Jakarta, Daerah Khusus Ibukota Jakarta 14470
+									{address}
 								</p>
 							</Grid>
 							<Grid item xl={3} md={3} xs={12}>
 								<h4 style={styles.header}>Kontak</h4>
 								<ul style={styles.linkList}>
-									<li>Telepon: 081-716-1667</li>
-									<li>E-Mail: mitrajkaliber@yahoo.com</li>
+									{contact.map((contactEntry, index) => {
+										const {name, value} = contactEntry
+										return <li key={name + index}>{name}: {value}</li>
+									})}
 								</ul>
 							</Grid>
 						</Grid>

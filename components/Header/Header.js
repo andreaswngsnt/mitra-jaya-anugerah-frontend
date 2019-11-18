@@ -2,32 +2,69 @@ import {Component} from "react"
 import Link from "next/link"
 
 import {AppBar, Drawer, Grid, Hidden, IconButton, List, ListItem, ListItemText, Toolbar} from "@material-ui/core"
-import {Menu as MenuIcon} from "@material-ui/icons"
+import {Close as CloseIcon, Menu as MenuIcon} from "@material-ui/icons"
 
-const HeaderLink = (props) => {
-	const {href, children} = props
+import {fontFamily, colors} from "../../vars/styles"
+
+class HeaderLink extends Component {
+	constructor(props) {
+		super(props)
+		this.styles = {
+			link: {
+				margin: "0 1rem",
+				textDecoration: "none",
+				fontWeight: "700",
+				color: "inherit"
+			},
+			linkHover: {
+				borderBottom: "0.25rem solid",
+				borderColor: colors.yellow,
+				transition: "border-width 0.25s linear",
+				margin: "0 1rem",
+				textDecoration: "none",
+				fontWeight: "700",
+				color: "inherit"
+			}
+		}
+		this.state = {
+			isHover: false
+		}
+	}
+
+	handleAddHover = () => {
+		const {isHover} = this.state
+		return this.setState({isHover: !isHover})
+	}
+
+	handleRemoveHover = () => {
+		const {isHover} = this.state
+		return this.setState({isHover: !isHover})
+	}
+
+	render() {
+		const {href, children} = this.props
+		const {isHover} = this.state
+		const {link, linkHover} = this.styles
 	
-	return (
-		<Link href={href}>
-			<a 
-				style={{
-					margin: "0 1rem",
-					textDecoration: "none",
-					fontWeight: "700",
-					color: "inherit"
-				}}
-			>
-				{children}
-			</a>
-		</Link>
-	)
+		return (
+			<Link href={href}>
+				<a 
+					onMouseEnter={this.handleAddHover}
+					onMouseLeave={this.handleRemoveHover}
+					style={isHover ? linkHover : link}
+				>
+					{children}
+				</a>
+			</Link>
+		)
+	}
 }
 
 class Header extends Component {
 	constructor(props) {
 		super(props)
 		this.headerLinks = [
-			{display: "Produk Kami", href: "/produk-kami"},
+			{display: "Produk & Layanan", href: "/produk-layanan"},
 			{display: "Proyek", href: "/proyek"},
 			{display: "Tentang Kami", href: "/tentang-kami"}
 		]
@@ -45,6 +82,12 @@ class Header extends Component {
 	renderDrawerContent = () => {
 		return (
 			<div style={{width: "15rem", padding: "1rem"}}>
+				<IconButton 
+					onClick={this.handleToggleDrawer}
+					style={{marginBottom: "1rem"}}
+				>
+					<CloseIcon />
+				</IconButton>
 				<List>
 					{this.headerLinks.map((headerEntry, headerEntryIndex) => {
 						const {display, href} = headerEntry
@@ -54,7 +97,7 @@ class Header extends Component {
 								<a style={{textDecoration: "none", color: "inherit"}}>
 									<ListItem button>
 										<ListItemText>
-											<span style={{fontFamily: "'Open Sans', sans-serif", fontWeight: 700}}>
+											<span style={{fontFamily: fontFamily, fontWeight: 700}}>
 												{display}
 											</span>
 										</ListItemText>
@@ -85,12 +128,16 @@ class Header extends Component {
 								padding: "1rem"
 							}}
 						>
-							<div style={{display: "flex" , flexDirection: "row", alignItems: "center"}}>
-								<img src="/logo.png" style={{maxHeight: "3rem", marginLeft: "1rem"}} />
-								<Hidden smDown>
-									<h3 style={{marginLeft: "1rem"}}>Mitra Jaya Anugerah</h3>
-								</Hidden>
-							</div>
+							<Link href="/">
+								<a style={{textDecoration: "none", color: "inherit"}}>
+									<div style={{display: "flex" , flexDirection: "row", alignItems: "center"}}>
+										<img src="/logo.png" style={{maxHeight: "3rem", marginLeft: "1rem"}} />
+										<Hidden smDown>
+											<h3 style={{marginLeft: "1rem"}}>Mitra Jaya Anugerah</h3>
+										</Hidden>
+									</div>
+								</a>
+							</Link>
 							<Hidden mdUp>
 								<IconButton
 									onClick={this.handleToggleDrawer} 

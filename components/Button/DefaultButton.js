@@ -1,4 +1,5 @@
 import {Button} from "@material-ui/core"
+import {fontFamily} from "../../vars/styles"
 
 const DefaultButton = (props) => {
 	const {children} = props
@@ -10,7 +11,7 @@ const DefaultButton = (props) => {
 				padding: "1rem",
 				borderRadius: 0,
 				textTransform: "none",
-				fontFamily: "'Open Sans', Arial, sans-serif"
+				fontFamily: fontFamily
 			}}
 		>
 			{children}
