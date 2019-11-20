@@ -4,7 +4,8 @@ import Link from "next/link"
 import {AppBar, Drawer, Grid, Hidden, IconButton, List, ListItem, ListItemText, Toolbar} from "@material-ui/core"
 import {Close as CloseIcon, Menu as MenuIcon} from "@material-ui/icons"
 
-import {fontFamily, colors} from "../../vars/styles"
+import {fontFamily} from "../../styles/fonts"
+import {yellow} from "../../styles/colors"
 
 class HeaderLink extends Component {
 	constructor(props) {
@@ -18,7 +19,7 @@ class HeaderLink extends Component {
 			},
 			linkHover: {
 				borderBottom: "0.25rem solid",
-				borderColor: colors.yellow,
+				borderColor: yellow,
 				transition: "border-width 0.25s linear",
 				margin: "0 1rem",
 				textDecoration: "none",

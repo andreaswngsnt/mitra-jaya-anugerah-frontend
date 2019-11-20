@@ -2,19 +2,19 @@ import Link from "next/link"
 import {Grid, Paper} from "@material-ui/core"
 
 import {address, contact} from "../../vars/information"
-import {colors} from "../../vars/styles"
+import {white, grey, blue} from "../../styles/colors"
 
 const styles = {
 	header: {
-		color: colors.white
+		color: white
 	},
 	paragraph: {
-		color: colors.grey
+		color: grey
 	},
 	linkList: {
 		listStyleType: "none",
   		padding: 0,
-		color: colors.grey
+		color: grey
 	},
 	link: {
 		textDecoration: "none",
@@ -24,7 +24,7 @@ const styles = {
 
 const Footer = () => {
 	return (
-		<Paper elevation={6} square style={{backgroundColor: colors.blue}}>
+		<Paper elevation={6} square style={{backgroundColor: blue}}>
 			<Grid container justify="center">
 				<Grid item xl={8} md={9} xs={12}>
 					<footer style={{padding: "2rem"}}>

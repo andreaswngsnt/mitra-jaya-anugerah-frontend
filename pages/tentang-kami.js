@@ -3,7 +3,7 @@ import {Grid} from "@material-ui/core"
 import LandingLayout from "../components/Layout/LandingLayout"
 import SimpleSection from "../components/Section/SimpleSection"
 
-import {colors} from "../vars/styles"
+import {yellow} from "../styles/colors"
 import {address, contact} from "../vars/information"
 
 const Statement = (props) => {
@@ -13,7 +13,7 @@ const Statement = (props) => {
 		<div
 			style={{
 				borderLeft: "0.5rem solid",
-				borderColor: colors.yellow
+				borderColor: yellow
 			}}
 		>
 			<blockquote style={{padding: "0.5em, 0.25em"}}>
