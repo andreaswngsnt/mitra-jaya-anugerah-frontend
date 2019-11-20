@@ -1,5 +1,5 @@
 import {Button} from "@material-ui/core"
-import {fontFamily} from "../../vars/styles"
+import {fontFamily} from "../../styles/fonts"
 
 const DefaultButton = (props) => {
 	const {children} = props

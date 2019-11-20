@@ -1,5 +1,5 @@
 import {Grid, Hidden, Paper} from "@material-ui/core"
-import {colors} from "../../vars/styles"
+import {yellow} from "../../styles/colors"
 
 const CardSection = (props) => {
 	const {children} = props
@@ -14,7 +14,7 @@ const CardSection = (props) => {
 						position: "relative", 
 						top: "-5rem", 
 						borderTop: "0.25rem solid",
-						borderColor: colors.yellow
+						borderColor: yellow
 					}}
 				>
 					<Hidden smDown>

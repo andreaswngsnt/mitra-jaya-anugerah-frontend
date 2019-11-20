@@ -7,7 +7,7 @@ import SimpleSection from "../components/Section/SimpleSection"
 import HeroHeading from "../components/Text/HeroHeading"
 import HighlightedSectionHeading from "../components/Text/HighlightedSectionHeading"
 
-import {colors} from "../vars/styles"
+import {yellow} from "../styles/colors"
 
 const projects = [
 	{name: "Rumah Sakit Harapan Kita", imagePath: "/images/projects/rs_harapan_kita.jpg"},
@@ -32,7 +32,7 @@ const ProjectPreview = (props) => {
 			square
 			style={{
 				borderTop: "0.25rem solid",
-				borderColor: colors.yellow
+				borderColor: yellow
 			}}
 		>
 			<img 

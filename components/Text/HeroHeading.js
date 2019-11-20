@@ -1,7 +1,7 @@
 import {Fragment} from "react"
 import {Hidden} from "@material-ui/core"
 
-import {colors} from "../../vars/styles"
+import {white, yellow} from "../../styles/colors"
 
 const HeroHeading = (props) => {
 	const {children} = props
@@ -11,12 +11,12 @@ const HeroHeading = (props) => {
 			position: "relative",
 			left: "0.25em",
 			fontWeight: 400,
-			color: colors.white
+			color: white
 		},
 		highlight: {
 			display: "inline",
-			backgroundColor: colors.yellow,
-			boxShadow: `0.25em 0 0 ${colors.yellow}, -0.25em 0 0 ${colors.yellow}`,
+			backgroundColor: yellow,
+			boxShadow: `0.25em 0 0 ${yellow}, -0.25em 0 0 ${yellow}`,
 			opacity: 0.95
 		}
 	}

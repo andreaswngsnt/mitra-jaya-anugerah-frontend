@@ -11,7 +11,7 @@ import HeroHeading from "../components/Text/HeroHeading"
 import HighlightedSectionHeading from "../components/Text/HighlightedSectionHeading"
 import DefaultButton from "../components/Button/DefaultButton"
 
-import {colors} from "../vars/styles"
+import {yellow} from "../styles/colors"
 
 const ProductPreview = (props) => {
 	const {name, imagePath} = props
@@ -43,7 +43,7 @@ const ProjectPreview = (props) => {
 			square
 			style={{
 				borderTop: "0.25rem solid",
-				borderColor: colors.yellow
+				borderColor: yellow
 			}}
 		>
 			<img 

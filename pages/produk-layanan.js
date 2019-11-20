@@ -6,7 +6,7 @@ import SimpleSection from "../components/Section/SimpleSection"
 
 import HeroHeading from "../components/Text/HeroHeading"
 
-import {colors} from "../vars/styles"
+import {yellow} from "../styles/colors"
 
 const ProductPreview = (props) => {
 	const {name, description, imagePath} = props
@@ -17,7 +17,7 @@ const ProductPreview = (props) => {
 			square
 			style={{
 				borderTop: "0.25rem solid",
-				borderColor: colors.yellow
+				borderColor: yellow
 			}}
 		>
 			<img 
