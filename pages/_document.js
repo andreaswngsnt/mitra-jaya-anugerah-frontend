@@ -1,5 +1,5 @@
 import Document, {Html, Head, Main, NextScript} from "next/document"
-import {fontFamily} from "../vars/styles"
+import {fontFamily} from "../styles/fonts"
 
 class MyDocument extends Document {
 	static async getInitialProps(ctx) {
